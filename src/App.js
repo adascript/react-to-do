@@ -43,6 +43,15 @@ class App extends Component {
     });
   }
 
+  deleteTodo(key) {
+    const remainingTodos = this.state.todos.filter(function(todo, index) {
+      return index !== key;
+    });
+    this.setState({
+      todos: remainingTodos
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -53,6 +62,7 @@ class App extends Component {
               description={todo.description} 
               isCompleted={todo.isCompleted}
               toggleComplete={() => this.toggleComplete(index)}
+              deleteTodo={() => this.deleteTodo(index)}
              />
           )}
         </ul>
